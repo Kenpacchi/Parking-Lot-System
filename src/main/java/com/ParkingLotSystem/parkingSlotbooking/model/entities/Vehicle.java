@@ -18,6 +18,8 @@ public class Vehicle {
 
     private String name;
 
+    private String vehicleNumber;
+
     private Long length;
 
     private Long width;

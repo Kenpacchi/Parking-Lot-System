@@ -25,6 +25,6 @@ public class Floor {
     private Long y;
 
     @OneToMany(mappedBy = "floor", cascade = CascadeType.ALL)
-    private List<Slot> slotList;
+    private List<Slot> slots;
 
 }
