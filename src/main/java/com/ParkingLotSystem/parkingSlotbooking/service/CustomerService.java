@@ -4,6 +4,7 @@ import com.ParkingLotSystem.parkingSlotbooking.model.dto.SignUpDTO;
 import com.ParkingLotSystem.parkingSlotbooking.model.entities.Customer;
 import com.ParkingLotSystem.parkingSlotbooking.model.entities.Vehicle;
 import com.ParkingLotSystem.parkingSlotbooking.repositories.CustomerRepository;
+import com.ParkingLotSystem.parkingSlotbooking.repositories.VehicleRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private VehicleRepository vehicleRepository;
 
     public String authCheck(String mobileNumber,String password){
         Customer customer=customerRepository.findByNumber(mobileNumber);
@@ -47,6 +50,7 @@ public class CustomerService {
         vehicle.setWidth(signUpDTO.getVehicleWidth());
         vehicle.setVehicleNumber(signUpDTO.getVehicleNumber());
         customer.setVehicle(vehicle);
+        vehicleRepository.save(vehicle);
         customerRepository.save(customer);
         return "Signup Success";
     }
